@@ -24,15 +24,9 @@ async def create_note(note: Note, request: Request, user=Depends(get_current_use
     """
     Create a new note in the user's organization.
 
-    **Authentication Required:** X-Org-ID and X-User-ID headers
+    Authentication Required: X-Org-ID and X-User-ID headers
 
-    **Permissions:** writer, admin
-
-    **Request Body:**
-    - **title** (str): Note title
-    - **content** (str): Note content
-
-    **Returns:** Complete note object with generated ID and timestamps
+    Permissions: writer, admin
     """
     check_permission(user, ["writer", "admin"])
     note.org_id = user["org_id"]
@@ -54,9 +48,8 @@ async def list_notes(request: Request, user=Depends(get_current_user)):
     """
     Get all notes for the authenticated user's organization.
 
-    **Authentication Required:** X-Org-ID and X-User-ID headers
+    Authentication Required: X-Org-ID and X-User-ID headers
 
-    **Returns:** List of all notes in the organization
     """
     return await NoteService.list_notes_by_org(user["org_id"])
 
@@ -78,12 +71,8 @@ async def get_note(note_id: str, request: Request, user=Depends(get_current_user
     """
     Get a specific note by its ID.
 
-    **Authentication Required:** X-Org-ID and X-User-ID headers
+    Authentication Required: X-Org-ID and X-User-ID headers
 
-    **Path Parameters:**
-    - **note_id** (str): Unique identifier of the note
-
-    **Returns:** Complete note object
     """
     note = await NoteService.get_note(note_id, user["org_id"])
     if not note:
@@ -110,14 +99,10 @@ async def delete_note(note_id: str, request: Request, user=Depends(get_current_u
     """
     Delete a note by its ID.
 
-    **Authentication Required:** X-Org-ID and X-User-ID headers
+    Authentication Required: X-Org-ID and X-User-ID headers
 
-    **Permissions:** admin only
+    Permissions: admin only
 
-    **Path Parameters:**
-    - **note_id** (str): Unique identifier of the note to delete
-
-    **Returns:** Success message
     """
     check_permission(user, ["admin"])
     deleted = await NoteService.delete_note(note_id, user["org_id"])

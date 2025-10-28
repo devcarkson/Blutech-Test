@@ -17,14 +17,7 @@ router = APIRouter()
     }
 )
 async def create_organization(org: Organization):
-    """
-    Create a new organization.
-
-    **Request Body:**
-    - **name** (str): Name of the organization
-
-    **Returns:** Organization object with generated ID and creation timestamp
-    """
+    # Create a new organization
     return await OrganizationService.create_organization(org)
 
 @router.get(
@@ -39,9 +32,5 @@ async def create_organization(org: Organization):
     }
 )
 async def list_organizations():
-    """
-    Get all organizations.
-
-    **Returns:** List of all organizations with their details
-    """
+#    Get all organizations
     return await OrganizationService.list_organizations()

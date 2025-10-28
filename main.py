@@ -18,24 +18,24 @@ app = FastAPI(
     description="""
     A comprehensive multi-tenant notes management system built with FastAPI and MongoDB.
 
-    ## Features
+    Features
 
-    * **Multi-tenant architecture**: Organizations can manage their own users and notes
-    * **Role-based access control**: Reader, Writer, and Admin roles
-    * **RESTful API**: Complete CRUD operations for organizations, users, and notes
-    * **MongoDB integration**: Scalable document-based storage
+    1 Multi-tenant architecture: Organizations can manage their own users and notes
+    2 Role-based access control: Reader, Writer, and Admin roles
+    3 RESTful API**: Complete CRUD operations for organizations, users, and notes
+    4 MongoDB integration: Scalable document-based storage
 
-    ## Authentication
+    Authentication
 
     All endpoints (except root) require authentication headers:
-    - `X-Org-ID`: Organization identifier
-    - `X-User-ID`: User identifier
+    1 `X-Org-ID`: Organization identifier
+    2 `X-User-ID`: User identifier
 
-    ## Roles & Permissions
+    Roles & Permissions
 
-    - **Reader**: Can view notes
-    - **Writer**: Can create and view notes
-    - **Admin**: Full access including user management and note deletion
+    1 Reader: Can view notes
+    2 Writer: Can create and view notes
+    3 Admin: Full access including user management and note deletion
     """,
     version="1.0.0",
     contact={
